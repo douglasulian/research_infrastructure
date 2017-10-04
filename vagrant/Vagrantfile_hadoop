@@ -1,0 +1,75 @@
+
+
+  # define Master server
+  config.vm.define HADOOP_MASTER_HOSTNAME do |master|
+    master.vm.hostname = HADOOP_MASTER_HOSTNAME
+    master.vm.box = "centos/7"
+    master.vm.box_version = "1611.01"
+    #master.vm.synced_folder ".", "/home/vagrant/src", mount_options: ["dmode=775,fmode=664"]
+    master.vm.network "private_network", ip: HADOOP_MASTER_IP
+    master.vm.provider "virtualbox" do |v|
+      v.name = HADOOP_MASTER_HOSTNAME
+      v.cpus = 2
+      v.memory = 512
+    end
+    # copy private key so hosts can ssh using key authentication (the script below sets permissions to 600)
+    master.vm.provision :file do |file|
+      file.source      = PRIVATE_KEY_SOURCE
+      file.destination = PRIVATE_KEY_DESTINATION
+    end
+    #master.vm.provision "shell", path: "bootstrap-master.sh"
+  end
+
+  # define data1 server
+  config.vm.define HADOOP_DATA01_HOSTNAME do |data1|
+    data1.vm.hostname = HADOOP_DATA01_HOSTNAME
+    data1.vm.box = "centos/7"
+    data1.vm.box_version = "1611.01"
+    data1.vm.network "private_network", ip: HADOOP_DATA01_IP
+    data1.vm.provider "virtualbox" do |v|
+      v.name = HADOOP_DATA01_HOSTNAME
+      v.cpus = 2
+      v.memory = 512
+    end
+    # copy private key so hosts can ssh using key authentication (the script below sets permissions to 600)
+    data1.vm.provision :file do |file|
+      file.source      = PRIVATE_KEY_SOURCE
+      file.destination = PRIVATE_KEY_DESTINATION
+    end
+  end
+
+  # define data2 server
+  config.vm.define HADOOP_DATA02_HOSTNAME do |data1|
+    data1.vm.hostname = HADOOP_DATA02_HOSTNAME
+    data1.vm.box = "centos/7"
+    data1.vm.box_version = "1611.01"
+    data1.vm.network "private_network", ip: HADOOP_DATA02_IP
+    data1.vm.provider "virtualbox" do |v|
+      v.name = HADOOP_DATA02_HOSTNAME
+      v.cpus = 2
+      v.memory = 512
+    end
+    # copy private key so hosts can ssh using key authentication (the script below sets permissions to 600)
+    data1.vm.provision :file do |file|
+      file.source      = PRIVATE_KEY_SOURCE
+      file.destination = PRIVATE_KEY_DESTINATION
+    end
+  end
+
+  # define data3 server
+  config.vm.define HADOOP_DATA03_HOSTNAME do |data1|
+    data1.vm.hostname = HADOOP_DATA03_HOSTNAME
+    data1.vm.box = "centos/7"
+    data1.vm.box_version = "1611.01"
+    data1.vm.network "private_network", ip: HADOOP_DATA03_IP
+    data1.vm.provider "virtualbox" do |v|
+      v.name = HADOOP_DATA03_HOSTNAME
+      v.cpus = 2
+      v.memory = 512
+    end
+    # copy private key so hosts can ssh using key authentication (the script below sets permissions to 600)
+    data1.vm.provision :file do |file|
+      file.source      = PRIVATE_KEY_SOURCE
+      file.destination = PRIVATE_KEY_DESTINATION
+    end
+  end
