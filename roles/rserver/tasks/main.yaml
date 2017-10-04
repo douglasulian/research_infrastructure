@@ -1,0 +1,10 @@
+- name: Install R Studio Server using Rocker/Studio (https://hub.docker.com/r/rocker)
+  docker:
+    name: rocker/rstudio
+    image: rocker/rstudio
+    env:
+       #USER=douglas
+       #PASSWORD=douglas
+       ROOT: TRUE
+    volumes:
+       - "/data:/home/rstudio"   
