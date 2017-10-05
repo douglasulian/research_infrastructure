@@ -1,9 +1,0 @@
-- name: Cofigure rserver
-  hosts: rserver
-  become: yes
-  
-  roles:
-    - epel
-    - pip
-    - docker
-    - rserver
