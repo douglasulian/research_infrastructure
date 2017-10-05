@@ -2,20 +2,14 @@ PRIVATE_KEY_SOURCE      = '/home/douglas/.ssh/id_rsa.pub'
 PRIVATE_KEY_DESTINATION = '/home/vagrant/.ssh/authorized_keys'
 RSERVER_IP              = '10.238.4.110'
 RSERVER_HOSTNAME        = 'SRV-DEV-RSERVER01-POA'
-HADOOP_MASTER_IP        = '10.238.4.111'
-HADOOP_MASTER_HOSTNAME  = 'SRV-DEV-HADOOP01-POA'
-HADOOP_DATA01_IP        = '10.238.4.112'
-HADOOP_DATA01_HOSTNAME  = 'SRV-DEV-HADOOP02-POA'
-HADOOP_DATA02_IP        = '10.238.4.113'
-HADOOP_DATA02_HOSTNAME  = 'SRV-DEV-HADOOP03-POA'
-HADOOP_DATA03_IP        = '10.238.4.114'
-HADOOP_DATA03_HOSTNAME  = 'SRV-DEV-HADOOP04-POA'
+HADOOP_HOSTNAMES        = ['SRV-DEV-HADOOP01-POA','SRV-DEV-HADOOP02-POA','SRV-DEV-HADOOP03-POA','SRV-DEV-HADOOP04-POA']
+HADOOP_IPS              = ['10.238.4.111'        ,'10.238.4.112'        ,'10.238.4.113'        ,'10.238.4.114'        ]
 
 Vagrant.configure("2") do |config|
 
   config.ssh.insert_key = false
-  
-  # define Master server
+
+  # define rserver
   config.vm.define RSERVER_HOSTNAME do |master|
     master.vm.hostname = RSERVER_HOSTNAME
     master.vm.box = "centos/7"
@@ -31,6 +25,26 @@ Vagrant.configure("2") do |config|
     master.vm.provision :file do |file|
       file.source      = PRIVATE_KEY_SOURCE
       file.destination = PRIVATE_KEY_DESTINATION
+    end
+  end
+
+  # define hadoop servers
+  (0..3).each do |i|
+    config.vm.define HADOOP_HOSTNAMES[i] do |data|
+      data.vm.hostname = HADOOP_HOSTNAMES[i]
+      data.vm.box = "centos/7"
+      data.vm.box_version = "1611.01"
+      data.vm.network "private_network", ip: HADOOP_IPS[i]
+      data.vm.provider "virtualbox" do |v|
+        v.name = HADOOP_HOSTNAMES[i]
+        v.cpus = 2
+        v.memory = 512
+      end
+      # copy private key so hosts can ssh using key authentication (the script below sets permissions to 600)
+      data.vm.provision :file do |file|
+        file.source      = PRIVATE_KEY_SOURCE
+        file.destination = PRIVATE_KEY_DESTINATION
+      end
     end
   end
 end
