@@ -1,10 +1,9 @@
 - name: Ccnfigure rserver
   hosts: rserver
-  remote_user: vagrant
   become: yes
   
   roles:
-    - pip
     - epel
+    - pip
     - docker
     - rserver
