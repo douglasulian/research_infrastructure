@@ -1,4 +1,4 @@
-- name: Ccnfigure rserver
+- name: Cofigure rserver
   hosts: rserver
   become: yes
   
