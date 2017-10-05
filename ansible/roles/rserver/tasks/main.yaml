@@ -1,0 +1,18 @@
+- name: Pull Rocker/RStudio image (https://hub.docker.com/r/rocker)
+  docker_image:
+    name: rocker/tidyverse
+    pull: yes
+
+- name: Creates a data container for RStudio server
+  docker_container:
+    name: rserver
+    image: rocker/tidyverse
+    hostname: rserver
+    published_ports: 8787:8787
+    restart: yes
+    volumes:
+       - "/data:/home/rstudio/data"
+    env:
+       #USER=douglas
+       #PASSWORD=douglas
+       ROOT: true
