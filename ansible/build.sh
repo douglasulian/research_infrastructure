@@ -1,1 +1,1 @@
-ansible-playbook -i staging main.yaml --ask-become-pass -v
+ansible-playbook -i inventories/$1 main.yaml --ask-become-pass -vvvv

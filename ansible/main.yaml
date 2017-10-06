@@ -1,4 +1,4 @@
-- name: Cofigure rserver
+- name: Configure rserver
   hosts: rserver
   become: yes
   
@@ -7,3 +7,7 @@
     - pip
     - docker
     - rserver
+
+  environment:
+    http_proxy: "{{ proxy_env.http_proxy }}"
+    https_proxy: "{{ proxy_env.https_proxy }}" 

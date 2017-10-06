@@ -43,12 +43,12 @@
 ## db-[99:101]-node.example.com
 
 [rserver]
-10.238.4.110 ansible_user=douglas #DEV-RSERVER01-POA
+10.238.4.110 #DEV-RSERVER01-POA
 
 [hadoop-master]
-10.238.4.111 ansible_user=douglas #DEV-HADOOP01-POA
+10.238.4.111 #DEV-HADOOP01-POA
 
 [hadoop-data]
-10.238.4.112 ansible_user=douglas #SRV-DEV-HADOOP02-POA
-10.238.4.113 ansible_user=douglas #SRV-DEV-HADOOP03-POA
-10.238.4.114 ansible_user=douglas #SRV-DEV-HADOOP04-POA
+10.238.4.112 #DEV-HADOOP02-POA
+10.238.4.113 #DEV-HADOOP03-POA
+10.238.4.114 #DEV-HADOOP04-POA
