@@ -6,8 +6,8 @@
     - epel
     - pip
     - docker
-#    - rserver
+    - rserver
 
-#  environment:
-#    http_proxy: "{{ proxy_env.http_proxy }}"
-#    https_proxy: "{{ proxy_env.https_proxy }}" 
+  environment:
+    http_proxy: "{{ proxy_env.http_proxy }}"
+    https_proxy: "{{ proxy_env.https_proxy }}" 
