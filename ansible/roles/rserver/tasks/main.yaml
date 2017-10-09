@@ -16,3 +16,10 @@
        #USER=douglas
        #PASSWORD=douglas
        ROOT: true
+
+- name: Setup iptables do accept 8787 connections
+  iptables:
+    chain: INPUT
+    destination_port: 8787
+    policy: ACCEPT
+    procotol: tcp
