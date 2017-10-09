@@ -41,6 +41,8 @@
 # leading 0s:
 
 ## db-[99:101]-node.example.com
+[local]
+localhost
 
 [rserver]
 10.238.4.110 #DEV-RSERVER01-POA

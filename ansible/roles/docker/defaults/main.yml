@@ -5,7 +5,7 @@ docker_package: "docker-{{ docker_edition }}"
 docker_package_state: present
 
 # Docker Compose options.
-docker_install_compose: true
+docker_install_compose: false
 docker_compose_version: "1.16.1"
 docker_compose_path: /usr/local/bin/docker-compose
 
@@ -17,3 +17,5 @@ docker_apt_repository: "deb https://download.docker.com/linux/{{ ansible_distrib
 docker_yum_repo_url: https://download.docker.com/linux/centos/docker-{{ docker_edition }}.repo
 docker_yum_repo_enable_edge: 0
 docker_yum_repo_enable_test: 0
+
+docker_setup_proxy: false
