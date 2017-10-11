@@ -9,5 +9,6 @@
     image: postgres
     hostname: DEV-USGZH-POSTGRESQL01-POA
     restart: yes
+    state: started
     env:
        POSTGRES_PASSWORD=postgres
