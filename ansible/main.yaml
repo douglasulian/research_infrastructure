@@ -1,13 +1,39 @@
-- name: Configure rserver
-  hosts: rserver
+- name: Configure SQUID when inventory is staging
+  hosts: squid
   become: yes
-  
-  roles:
-    - epel
-    - pip
-    - docker
-    - rserver
 
-  environment:
-    http_proxy: "{{ proxy_env.http_proxy }}"
-    https_proxy: "{{ proxy_env.https_proxy }}" 
+  tasks:
+    - block:
+      - name: Setup squid server when staging
+        include_role:
+          name: epel
+        when: ( 'staging' in inventory_dir )
+      - name: Setup squid server when staging
+        include_role:
+          name: pip
+      - name: Setup squid server when staging
+        include_role:
+          name: docker
+      - name: Setup squid server when staging
+        include_role:
+          name: squid
+      when: ( 'staging' in inventory_dir )
+
+    - debug:
+        msg: "System {{ inventory_dir }} has uuid {{ ansible_product_uuid }}"
+
+ 
+#- name: Configure R Server
+#  hosts: rserver
+#  become: yes
+  
+#  roles:
+#    - epel
+#    - pip
+#    - docker
+#    - rserver
+#    - postgresql
+
+#  environment:
+#    http_proxy: "{{ proxy_env.http_proxy }}"
+#    https_proxy: "{{ proxy_env.https_proxy }}" 

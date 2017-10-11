@@ -1,0 +1,9 @@
+- name: Configure SQUID Server
+  hosts: squid
+  become: yes
+
+  roles:
+    - epel
+    - pip
+    - docker
+    - squid
