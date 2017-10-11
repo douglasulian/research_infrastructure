@@ -8,7 +8,7 @@
     name: postgresql
     image: postgres
     hostname: DEV-USGZH-POSTGRESQL01-POA
-    restart: yes
+    restart_policy: always
     state: started
     env:
        POSTGRES_PASSWORD=postgres

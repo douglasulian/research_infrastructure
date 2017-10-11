@@ -9,7 +9,7 @@
     image: rocker/tidyverse
     hostname: rserver
     published_ports: 8787:8787
-    restart: yes
+    restart_policy: always
     state: started
     volumes:
        - "/data:/home/rstudio/data"
@@ -19,8 +19,7 @@
        ROOT: true
 
 - name: Setup iptables do accept 8787 connections
-  iptables:
-    chain: INPUT
-    destination_port: 8787
-    policy: ACCEPT
-    procotol: tcp
+  firewalld:
+    port: 8787/tcp
+    permanent: true
+    state: enabled

@@ -44,6 +44,9 @@
 [local]
 localhost
 
+[postgresql]
+10.238.4.109 #DEV-USGZH-POSTGRESQL01-POA
+
 [rserver]
 10.238.4.110 #DEV-RSERVER01-POA
 
