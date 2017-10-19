@@ -14,9 +14,9 @@
     env:
        POSTGRES_PASSWORD=postgres
 
-- name: Setup iptables do accept 5432 connections
-  firewalld:
-    port: 5432/tcp
-    permanent: true
-    state: enabled
-    immediate: true
+#- name: Setup iptables do accept 5432 connections
+#  firewalld:
+#    port: 5432/tcp
+#    permanent: true
+#    state: enabled
+#    immediate: true
