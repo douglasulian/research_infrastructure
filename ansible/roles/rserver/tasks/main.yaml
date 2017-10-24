@@ -14,9 +14,9 @@
     volumes:
        - "/data:/home/rstudio/data"
     env:
-       #USER=douglas
-       #PASSWORD=douglas
        ROOT: true
+       HTTP_PROXY: "{{ proxy_env.http_proxy }}"
+       HTTPS_PROXY: "{{ proxy_env.http_proxy }}"
 
 - name: Setup iptables do accept 8787 connections
   firewalld:
