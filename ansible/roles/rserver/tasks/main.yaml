@@ -31,3 +31,4 @@
   with_items:
     - libjpeg-dev
     - libtiff5-dev
+    - libgmp-dev
