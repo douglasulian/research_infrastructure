@@ -23,3 +23,10 @@
     port: 8787/tcp
     permanent: true
     state: enabled
+
+- name: Ensure depdencies are installed.
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libjpeg-dev
