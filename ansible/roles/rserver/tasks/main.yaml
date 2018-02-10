@@ -33,3 +33,4 @@
     - libtiff5-dev
     - libgmp-dev
     - default-jdk
+    - r-base-dev
