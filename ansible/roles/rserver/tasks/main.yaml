@@ -12,7 +12,7 @@
     restart_policy: always
     state: started
     volumes:
-       - "/data:/home/rstudio/data"
+       - "/data:/home"
     env:
        ROOT: true
        HTTP_PROXY: "{{ proxy_env.http_proxy }}"
